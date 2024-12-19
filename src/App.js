@@ -62,7 +62,7 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  backgroundColor: '#117a65', // Set AppBar background color
+  backgroundColor: '#117a65', 
   color: '#ffffff',
   ...(open && {
     marginLeft: drawerWidth,
@@ -101,16 +101,16 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       ...openedMixin(theme),
       '& .MuiDrawer-paper': {
         ...openedMixin(theme),
-        backgroundColor: '#117a65', // Drawer background color when open
-        color: '#ffffff', // Optional: text color for the drawer content
+        backgroundColor: '#117a65', 
+        color: '#ffffff', 
       },
     }),
     ...(!open && {
       ...closedMixin(theme),
       '& .MuiDrawer-paper': {
         ...closedMixin(theme),
-        backgroundColor: '#117a65', // Drawer background color when closed
-        color: '#ffffff', // Optional: text color for the drawer content
+        backgroundColor: '#117a65', 
+        color: '#ffffff',
       },
     }),
   }),
@@ -120,7 +120,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [selectedMenu, setSelectedMenu] = React.useState('Home'); // State for selected menu
+  const [selectedMenu, setSelectedMenu] = React.useState('Home'); 
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -130,7 +130,7 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  // Menu items
+
   const menuItems = [
     { text: 'Home', icon: <HomeIcon /> },
     { text: 'Message', icon: <ChatBubbleIcon /> },
@@ -171,7 +171,7 @@ export default function MiniDrawer() {
           {menuItems.map((item, index) => (
             <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
-                onClick={() => setSelectedMenu(item.text)} // Handle click to change the content
+                onClick={() => setSelectedMenu(item.text)} 
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -198,7 +198,6 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {/* Conditional rendering based on selected menu */}
         {selectedMenu === 'Home' && <Dashboard />}
         {selectedMenu === 'Message' && <Typography>Message Section</Typography>}
         {selectedMenu === 'Social' && <Typography>Social Section</Typography>}
@@ -207,44 +206,3 @@ export default function MiniDrawer() {
   );
 }
 
-
-// import * as React from 'react';
-// import { Box, CssBaseline, Toolbar, Typography, AppBar, Tab, Tabs } from '@mui/material';
-// import HomeIcon from '@mui/icons-material/Home';
-// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-// import Dashboard from './components/Dashboard'; // Assuming Dashboard is your summary component
-
-// export default function App() {
-//   const [selectedTab, setSelectedTab] = React.useState(0); // State for selected tab
-
-//   const handleTabChange = (event, newValue) => {
-//     setSelectedTab(newValue); // Change tab on click
-//   };
-
-//   return (
-//     <Box sx={{ display: 'flex' }}>
-//       <CssBaseline />
-//       {/* AppBar with Tabs */}
-//       <AppBar position="fixed">
-//         <Toolbar>
-//           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-//             Dashboard
-//           </Typography>
-//           <Tabs value={selectedTab} onChange={handleTabChange} textColor="inherit" indicatorColor="secondary">
-//             <Tab label="Summary" icon={<HomeIcon />} />
-//             <Tab label="Sales" icon={<ShoppingCartIcon />} />
-//             <Tab label="Chats" icon={<ChatBubbleIcon />} />
-//           </Tabs>
-//         </Toolbar>
-//       </AppBar>
-
-//       <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: 8 }}>
-//         {/* Conditional rendering based on selected tab */}
-//         {selectedTab === 0 && <Dashboard />} {/* Summary Section */}
-//         {selectedTab === 1 && <Typography variant="h6">Sales Section</Typography>} {/* Sales Section */}
-//         {selectedTab === 2 && <Typography variant="h6">Chats Section</Typography>} {/* Chats Section */}
-//       </Box>
-//     </Box>
-//   );
-// }
